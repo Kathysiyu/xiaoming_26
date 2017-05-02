@@ -1,14 +1,74 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Xiaoming26</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>小明</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <script type="text/javascript">
+      WebFontConfig = {
+        google: { families: [ 'Unica+One::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
+  </head>
+
+  <body>
+
+    <header class="header">
+    <div class="header__bar row">
+      <h1 class="grid-6"><a href="/">小明</a></h1>
+
+      <% if user_signed_in? %>
+        <div class="user_nav grid-6">
+          <span><%= current_user.nickname %>
+            <ul class="user__info">
+              <li>
+                <a href="/users/<%= current_user.id %>">我的主页</a>
+          <%= link_to "登出", destroy_user_session_path, method: :delete %>
+          </li>
+            </ul>
+          </span>
+          <a class="post" href="/tweets/new">找小明</a>
+          <a class="btn" href="/tweets">看看别人说什么</a>  <!-- 投稿一覧へ戻る -->
+        </div>
+      <% else %>
+        <div class="grid-6">
+          <%= link_to "签到", new_user_session_path, class: 'post' %>
+          <%= link_to "新手登陆", new_user_registration_path, class: 'post' %>
+        </div>
+      <% end %>
+    </div>
+  </header>
 
 <%= yield %>
 
-</body>
+  <div class="contents">
+    <div class="contA">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+    <div class="contB">
+      
+    </div>
+  </div>
+
+
+
+    <footer>
+      <p>
+        Copyright Xiaoming 2017.
+      </p>
+    </footer>
+  </body>
 </html>
+
