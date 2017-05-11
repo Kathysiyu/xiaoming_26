@@ -5,5 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :tweets
   has_many :replies              #repilesテーブルとのアソシエーション
+  has_many :reviews
+  has_one :profile
 
 end

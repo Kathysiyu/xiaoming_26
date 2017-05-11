@@ -1,3 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $('#reply-btn').click ->
+    text = $('#reply-text').val()
+    $.ajax
+      url: '/create_reply'
+      method: 'post'
+      dataType: 'json'
+      data:
+        tweetid: $(this).data('tweetid')
+        text: text
+      context: this
+      success: (data) ->
+        $('#replies').append "<p><strong><a href='/users/#{data.userid}'>#{data.username}</a> : </strong>#{text}</p>"
+        $('#reply-text').val ''

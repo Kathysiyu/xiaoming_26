@@ -1,11 +1,14 @@
 class CreateTweets < ActiveRecord::Migration
     def change
       create_table :tweets do |t|
-        t.string      :name
-        t.integer     :userT_id
-        t.text        :text
-        t.text        :time
-        t.timestamps
+
+        t.integer :user_id, null: false
+        t.date :start_date, null: false
+        t.date :end_date, null: false
+        t.string :place, null: false
+        t.integer :people, null: false
+        t.text :text, null: false
+        t.timestamps null: false
       end
     end
   end

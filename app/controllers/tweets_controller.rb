@@ -1,22 +1,26 @@
 class TweetsController < ApplicationController
 
-before_action :move_to_index, except: [:index,:toppage]
+before_action :move_to_index, except: [:index]
 
-
-  def toppage #トップページ
-  end
 
   def index #ツイットを表示する
     @tweets = Tweet.includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
 
   def new
+    @tweet = Tweet.new
 
   end
 
   def create #新しいツイットを作成
-      Tweet.create(text: tweet_params[:text], user_id: current_user.id)
+    @tweet = current_user.tweets.new tweet_params
+    unless @tweet.invalid?
+      @tweet.save
+      redirect_to tweet_path @tweet
+    else
+      render 'new'
     end
+  end
 
   def destroy
       tweet = Tweet.find(params[:id])
@@ -32,7 +36,7 @@ before_action :move_to_index, except: [:index,:toppage]
 
   private
     def tweet_params
-      params.permit(:text)
+    params.require(:tweet).permit :start_date, :end_date, :place, :people, :text
     end
 
   def move_to_index
