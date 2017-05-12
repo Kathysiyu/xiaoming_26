@@ -16,7 +16,7 @@ before_action :move_to_index, except: [:index]
     @tweet = current_user.tweets.new tweet_params
     unless @tweet.invalid?
       @tweet.save
-      redirect_to tweet_path @tweet
+      redirect_to tweets_path
     else
       render 'new'
     end

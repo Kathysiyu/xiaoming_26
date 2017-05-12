@@ -1,12 +1,14 @@
 class RepliesController < ApplicationController
 
-  def create
-    @reply = Reply.create(text: reply_params[:text], tweet_id: reply_params[:tweet_id], user_id: current_user.id)
-    redirect_to "/tweets/#{@reply.tweet.id}"   #replyと結びつくツイートの詳細画面に遷移する
-  end
+   def create
+    Reply.create text: reply_params[:text],
+                 tweet_id: reply_params[:tweetid],
+                 user_id: current_user.id
+    render json: { userid: current_user.id, username: current_user.nickname }
+   end
 
   private
   def reply_params
-    params.permit(:text, :tweet_id)
+    params.permit(:text, :tweetid)
   end
 end

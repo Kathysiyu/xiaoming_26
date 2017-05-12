@@ -1,7 +1,7 @@
 $ ->
-  $('#user-profile').hide()
+  $('#user-tweets').hide()
   $('#user-rank').hide()
-  $('#user-tweets').show()
+  $('#user-profile').show()
 
   $('#user-tweets-btn').click ->
     $('#user-profile').hide()
@@ -16,4 +16,4 @@ $ ->
   $('#user-rank-btn').click ->
     $('#user-profile').hide()
     $('#user-tweets').hide()
-   $('#user-rank').show()
+    $('#user-rank').show()

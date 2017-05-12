@@ -1,5 +1,7 @@
 $ ->
-  $('#reply-btn').click ->
+  console.log 'fuga'
+  $(document).on 'click', '#reply-btn', ->
+    console.log 'hoge'
     text = $('#reply-text').val()
     $.ajax
       url: '/create_reply'
