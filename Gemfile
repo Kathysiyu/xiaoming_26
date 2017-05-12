@@ -32,8 +32,6 @@ gem 'kaminari'
 gem 'devise'
 gem 'haml-rails'
 gem 'paperclip'
-gem "gmaps4rails"
-gem "geocoder"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -48,6 +46,7 @@ group :development do
   gem 'web-console', '~> 2.0'
 end
 
-
+gem "gmaps4rails"
+gem "geocoder"
 
 
