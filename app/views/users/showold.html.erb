@@ -1,0 +1,20 @@
+<!-- <div class="contents row" >
+    <p><%= @nickname %>さんの投稿一覧</p>
+    <% @tweets.each do |tweet| %>
+      <div class="content_post";">
+        <%= simple_format(tweet.text) %>
+        <%= link_to "回复", "/tweets/#{tweet.id}" %>
+      </div>
+    <% end %>
+
+<% @reviews.each do |review| %>
+      <div class="content_post";">
+        <%= review.rate %>
+        <%= simple_format(review.review) %>
+
+      </div>
+    <% end %>
+    <%= paginate(@tweets) %>
+
+    <%= link_to 'add some comments',"/users/#{@user.id}/reviews/new"%>
+  </div> -->

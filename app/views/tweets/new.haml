@@ -1,0 +1,23 @@
+.contents.row
+  = form_for @tweet do |f|
+    %h3 Post Tweet
+    .field
+      = f.label '什么时候开始'
+      = f.date_field :start_date
+
+    .field
+      = f.label '什么时候结束'
+      = f.date_field :end_date
+
+    .field
+      = f.label '想在哪里玩耍'
+      = f.text_field :place
+
+    .field
+      = f.label '一共有多少人'
+      = f.number_field :people
+
+    .field
+      = f.label 'Text'
+      = f.text_area :text, placeholder: 'content', cols: '30', rows: '10'
+    = f.submit 'SEND'

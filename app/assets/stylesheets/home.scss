@@ -1,0 +1,203 @@
+html {
+ //  width: 400px;
+}
+
+body {
+    margin: 0px;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+footer {
+    background-color:#ebebe0;
+    height: 2em;
+    width:400px;
+
+
+
+    p {
+ line-height: 2em;
+    }
+}
+
+.center {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
+.img-container {
+    padding-top: 15px;
+    position: relative;
+
+    img {
+ height: auto;
+width: 90%;
+    }
+
+    a {
+ text-decoration: none;
+ position: absolute;
+ top: 40%;
+ height: 30%;
+ left: 30%;
+ width: 40%;
+ background: white;
+ font-size: 2.4em;
+ display: table;
+ color: black;
+ font-family: MingLiu;
+
+        }
+}
+
+.btn-container {
+    height: 90px;
+    background:#ffcccc;
+    margin-top: 15px;
+    margin-left: 5%;
+    width: 90%;
+    position: relative;
+
+    a {
+ // text-decoration: none;
+ font-size: 2em;
+ display: table;
+ //background: white;
+ position: absolute;
+ top: 30%;
+ height: 30%;
+ width: 20%;
+    }
+
+    .left { left: 20%; }
+    .right { right: 20%; }
+}
+
+#create-tweet-btn {
+    font-size: 2em;
+    height: 30%;
+    width: 20%;
+}
+
+.tweet {
+    text-align: left;
+    margin: 0 auto;
+    width: 250px;
+    border-bottom-style: double;
+}
+
+#logo {
+  margin-left: 80px;
+}
+
+.nice-margin {
+     margin: 10px 2%;
+}
+
+.lefting {
+    margin-left: 2%;
+    margin-right: 0%;
+ }
+
+.compact {
+    margin: 10px auto;
+    dt {
+        text-align: right;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        width: 50%;
+        float: left;
+        font-weight: bold;
+        clear: left;
+    }
+
+    dd {
+        text-align: left;
+        margin-bottom: 10px;
+    }
+}
+
+.icon {
+    color:#ffe6f2;
+}
+
+// .post{
+//  text-align: center;
+// }
+
+// .btn{
+//     text-align: center;
+// }
+
+// .topbar{
+//     text-align: center;
+// }
+.post {
+    width: 80%;
+    border-style: groove;
+}
+
+.single-tweet {
+    width: 80%;
+    margin: 10px auto;
+    border-style: dotted dotted dotted dotted;
+    border-radius: 3%;
+    background-color: white;
+    .text {
+        text-align: left;
+    }
+    border-color: yellow #ffcccc yellow;
+}
+
+.emph {
+    font-weight: bold;
+}
+
+.sub-info {
+    font-size: 80%;
+    color: grey;
+}
+
+.column {
+    > * {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 2%;
+    }
+}
+
+.row {
+    > * {display: block};
+}
+
+.background {
+    background-color: #e9ebee
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+.position-right {
+    float: right;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.topbar{
+    a{color: black;
+    }
+}
+

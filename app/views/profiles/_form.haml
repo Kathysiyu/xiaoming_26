@@ -1,0 +1,29 @@
+.center
+  - url = profile_path
+  = form_for @profile, url: url do |f|
+    %dl.compact.nice-margin
+      %dt= 'Name:'
+      %dd= f.text_field :name
+      %dt= 'Nickname:'
+      %dd= f.text_field :nickname
+      %dt= 'Picture:'
+      %dd= f.file_field :pic
+      %dt= 'Gender:'
+      %dd= f.text_field :gender
+      %dt= 'Birthday:'
+      %dd= f.date_field :birthday
+      %dt= 'Area:'
+      %dd= f.text_field :area
+      %dt= 'Hometown:'
+      %dd= f.text_field :hometown
+      %dt= 'Car:'
+      %dd= f.text_field :car
+      %dt= 'How Long:'
+      %dd= f.number_field :how_long
+      %dt= 'Hobby:'
+      %dd= f.text_field :hobby
+      %dt= 'Good At:'
+      %dd= f.text_field :good_at
+      %dt= 'Slogan:'
+      = f.text_field :slogan
+    = f.submit 'SUBMIT'

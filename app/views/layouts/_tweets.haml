@@ -1,0 +1,14 @@
+.single-tweet.align-left
+  .column.nice-margin
+    %a{ 'href': "/users/#{t.user.id}" }= image_tag t.user.profile.pic.url(:thumb), size: '40x40'
+    %a.emph{ 'href': "/users/#{t.user.id}" }= nickname
+    .row.align-right.position-right
+      .sub-info= "#{t.start_date} to #{t.end_date}"
+      .column
+        .sub-info= t.place
+        .sub-info= "#{t.people} ppl."
+  .text.nice-margin=t.text
+  .align-right.nice-margin
+    .inline-block= link_to '回复', "/tweets/#{t.id}"
+    - if user_signed_in? && current_user.id == t.user_id
+      .inline-block= link_to '删除', "/tweets/#{t.id}", method: :delete

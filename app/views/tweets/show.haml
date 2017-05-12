@@ -1,0 +1,41 @@
+.contents.row
+  = render 'layouts/tweets', nickname: @tweet.user.nickname, t: @tweet
+  .content_post
+    - if user_signed_in? && current_user.id == @tweet.user_id
+      .more
+        %ul.more_list
+          %li
+            = link_to '編集', "/tweets/#{@tweet.id}/edit", method: :get
+          %li
+            = link_to '削除', "/tweets/#{@tweet.id}", method: :delete
+    / %div
+    /   %p start date
+    /   = @tweet.start_date
+    / %div
+    /   %p end date
+    /   = @tweet.end_date
+    / %div
+    /   %p place
+    /   = @tweet.place
+    / %div
+    /   %p people count
+    /   = @tweet.people
+    /   = simple_format(@tweet.text)
+    / %span.name
+    /   %a{ 'href': "/users/#{@tweet.user.id}" }
+    /     %span 投稿者
+    /     = @tweet.user.nickname
+
+    .container
+      - if current_user
+        %textarea#reply-text{ cols: '30', rows: '5', name: 'text', placeholder: '回复他' }
+        %button#reply-btn{ type: 'button', data: { tweetid: @tweet.id } } SEND
+      #replies
+        %h4 ＜コメント一覧＞
+        - if @replies
+          - @replies.each do |comment|
+            %p
+              %strong
+                = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                = ' : '
+              = comment.text

@@ -1,0 +1,75 @@
+.center.nice-margin.background
+  %button#user-tweets-btn 投稿
+  %button#user-profile-btn 资料
+  %button#user-rank-btn 评价
+#user-tweets
+  %p= "#{@nickname}さんの投稿一覧"
+  - @tweets.each do |t|
+    .post{ style: 'margin: 20px auto;display: none;' }
+      %dl.compact
+        %dt= 'Start date:'
+        %dd= t.start_date
+        %dt= 'End date:'
+        %dd= t.end_date
+        %dt= 'Place:'
+        %dd= t.place
+        %dt= 'People:'
+        %dd= t.people
+        %dt= 'Text:'
+        %dd= t.text
+    = render 'layouts/tweets', nickname: @nickname, t: t
+  = paginate @tweets
+
+
+
+
+
+#user-profile
+  - if current_user.profile
+    = image_tag current_user.profile.pic.url(:thumb)
+    %dl.compact
+      %dt= 'name:'
+      %dd= current_user.profile.name
+      %dt= 'nickname:'
+      %dd= current_user.profile.nickname
+      %dt= 'gender:'
+      %dd= current_user.profile.gender
+      %dt= 'birthday:'
+      %dd= current_user.profile.birthday
+      %dt= 'area:'
+      %dd= current_user.profile.area
+      %dt= 'hometown:'
+      %dd= current_user.profile.hometown
+      %dt= 'car:'
+      %dd= current_user.profile.car
+      %dt= 'how_long:'
+      %dd= current_user.profile.how_long
+      %dt= 'hobby:'
+      %dd= current_user.profile.hobby
+      %dt= 'good_at:'
+      %dd= current_user.profile.good_at
+      %dt= 'slogan:'
+      %dd= current_user.profile.slogan
+    %button
+      = link_to '编辑', edit_profile_path
+  - else
+    %button
+      = link_to '新建', new_profile_path
+
+
+
+
+
+#user-rank
+  %p RANK 5
+
+  = form_for [@user, @review] do |f|
+    = f.label :レビュー
+    = f.text_area :review
+
+    = f.submit "保存"
+
+
+  - current_user.reviews.each do |review|
+    - if review.review.present?
+      = review.review
