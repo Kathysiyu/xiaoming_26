@@ -1,0 +1,7 @@
+.center
+  - url = bar_code_path
+  = form_for @bar_code, url: url do |f|
+    %dl.compact.nice-margin
+      %dt= 'Bar Code:'
+      %dd= f.file_field :pic
+    = f.submit 'SUBMIT'

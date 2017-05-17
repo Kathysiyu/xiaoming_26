@@ -1,6 +1,5 @@
-%i.fa.fa-cloud{:style => "font-size:60px;color:lightblue;"}
-.center
-  = link_to '投稿', new_tweet_path, id: 'create-tweet-btn'
+= link_to new_tweet_path do
+  %i.fa.fa-cloud{ style: 'font-size: 60px; color: #FA8072;' }
 
 .center
   - @tweets.each do |t|

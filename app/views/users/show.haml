@@ -3,7 +3,7 @@
   %button#user-profile-btn 资料
   %button#user-rank-btn 评价
 #user-tweets
-  %p= "#{@nickname}さんの投稿一覧"
+  %p= "#{@user.nickname}さんの投稿一覧"
   - @tweets.each do |t|
     .post{ style: 'margin: 20px auto;display: none;' }
       %dl.compact
@@ -20,56 +20,75 @@
     = render 'layouts/tweets', nickname: @nickname, t: t
   = paginate @tweets
 
-
-
-
-
 #user-profile
-  - if current_user.profile
-    = image_tag current_user.profile.pic.url(:thumb)
+  - if @user.profile
+    = image_tag @user.profile.pic.url(:thumb)
     %dl.compact
       %dt= 'name:'
-      %dd= current_user.profile.name
+      %dd= @user.profile.name 
       %dt= 'nickname:'
-      %dd= current_user.profile.nickname
+      %dd= @user.profile.nickname 
       %dt= 'gender:'
-      %dd= current_user.profile.gender
+      %dd= @user.profile.gender 
       %dt= 'birthday:'
-      %dd= current_user.profile.birthday
+      %dd= @user.profile.birthday 
       %dt= 'area:'
-      %dd= current_user.profile.area
+      %dd= @user.profile.area 
       %dt= 'hometown:'
-      %dd= current_user.profile.hometown
+      %dd= @user.profile.hometown 
       %dt= 'car:'
-      %dd= current_user.profile.car
+      %dd= @user.profile.car 
       %dt= 'how_long:'
-      %dd= current_user.profile.how_long
+      %dd= @user.profile.how_long 
       %dt= 'hobby:'
-      %dd= current_user.profile.hobby
+      %dd= @user.profile.hobby 
       %dt= 'good_at:'
-      %dd= current_user.profile.good_at
+      %dd= @user.profile.good_at 
       %dt= 'slogan:'
-      %dd= current_user.profile.slogan
-    %button
-      = link_to '编辑', edit_profile_path
+      %dd= @user.profile.slogan 
+    - if @user.id == current_user.id
+      %button
+        = link_to edit_profile_path do
+          %i.fa.fa-pencil-square-o{ style: 'font-size: 30px;' }
   - else
-    %button
-      = link_to '新建', new_profile_path
+    - if @user.id == current_user.id
+      %button
+        = link_to new_profile_path do
+          %i.fa.fa-pencil-square-o{ sytle: 'font-size: 30px' }
 
+  - if @user.bar_code
+    %button#qr-btn
+      %i.fa.fa-qrcode{ style: 'font-size: 30px' }
+  - else
+    %p No Bar Code
 
+  - if @user.id == current_user.id
+    - if current_user.bar_code
+      %button
+        = link_to edit_bar_code_path do
+          %i.fa.fa-pencil-square{ style: 'font-size: 30px' }
+    - else
+      %button
+        = link_to new_bar_code_path do
+          %i.fa.fa-pencil-square{ style: 'font-size: 30px' }
 
-
+  - if @user.bar_code
+    #qr-div
+      = image_tag @user.bar_code.pic.url(:original)
 
 #user-rank
-  %p RANK 5
+  %p
+    %span Rate
+    %input#review-rate{ type: 'number', min: '1', max: '5' }
+  %p
+    %span Review
+    %textarea#review-review{ cols: '30', rows: '3', placeholder: 'review' }
+  %button#review-btn{ type: 'button', data: { userid: @user.id, rid: current_user.id }} SEND
 
-  = form_for [@user, @review] do |f|
-    = f.label :レビュー
-    = f.text_area :review
-
-    = f.submit "保存"
-
-
-  - current_user.reviews.each do |review|
-    - if review.review.present?
-      = review.review
+  .container
+    #reviews
+      - @user.reviews.each do |review|
+        %p
+          %strong= "Nickname: #{User.find_by(id: review.reviewer_id).try(:nickname)}"
+          %h4= "Rate: #{review.rate}"
+          = "Review: #{review.review}"

@@ -33,7 +33,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'paperclip'
 gem "gmaps4rails"
-gem "geocoder"
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

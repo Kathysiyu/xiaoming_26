@@ -9,7 +9,7 @@
       %dt= 'Picture:'
       %dd= f.file_field :pic
       %dt= 'Gender:'
-      %dd= f.text_field :gender
+      %dd= f.select :gender, %w(男 女)
       %dt= 'Birthday:'
       %dd= f.date_field :birthday
       %dt= 'Area:'

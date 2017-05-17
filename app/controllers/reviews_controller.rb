@@ -1,17 +1,15 @@
 class ReviewsController < ApplicationController
-  def new
-    @user = User.find(params[:user_id])
-  end
-
   def create
-    @review = Review.new(review_params)
-    @review.save
-    redirect_to :back
+    Review.create rate: review_params[:rate],
+                  review: review_params[:review],
+                  user_id: review_params[:userid],
+		  reviewer_id: review_params[:rid]
+    render json: { nickname: current_user.nickname }
   end
 
   private
   def review_params
-     params.require(:review).permit(:rate, :review).merge(user_id: params[:user_id])
+     params.permit :rate, :review, :userid, :rid
   end
 end
 

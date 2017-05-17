@@ -1,6 +1,7 @@
 .contents.row
   = form_for @tweet do |f|
-    %h3 Post Tweet
+    / = image_tag "https://mmbiz.qpic.cn/mmbiz/sWBRQoGHMGoL6iaGFy1k6MVZEJXIic4aCuKsmialOZOeBvZdrWR1NuV2dUjiaSrH9xbfkgCB3SwiamU4DXUB3qzREOg/640?wx_fmt=png&wxfrom=5&wx_lazy=1", alt: "aaa", height: "200", width: "200", id: "cake"
+    %h3.tweet_new_header 寻找 小明
     .field
       = f.label '什么时候开始'
       = f.date_field :start_date
@@ -11,11 +12,11 @@
 
     .field
       = f.label '想在哪里玩耍'
-      = f.text_field :place
+      = f.select :place, %w(东京 京都 名古屋 冲绳 大阪 和歌山 札幌 仙台 福岛 奈良 神户)
 
     .field
       = f.label '一共有多少人'
-      = f.number_field :people
+      = f.select :people, (1..10).to_a
 
     .field
       = f.label 'Text'

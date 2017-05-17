@@ -1,11 +1,25 @@
 .img-container
-  = image_tag 'strategy.jpeg'
-  = link_to '攻略', strategy_path
+  .top-btn#strategy
+    = link_to '攻略', strategy_path
 
 .img-container
-  = image_tag 'zhao.jpeg'
-  = link_to '找小明', new_tweet_path
+  .top-btn#newTweet
+    = link_to '找小明', new_tweet_path
 
 .img-container
-  = image_tag 'about.jpeg'
-  = link_to '关于我们', about_path
+  .top-btn#about
+    = link_to '关于我们', about_path
+
+.map-container
+  %span.map_title
+    Where our 小明s are from?
+  #map
+
+
+:javascript
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(#{raw @hash.to_json});
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });

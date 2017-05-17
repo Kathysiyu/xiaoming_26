@@ -6,43 +6,17 @@
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-
+    %script{src: "https://use.fontawesome.com/014ec5fd76.js"}
+    %script{src: "//maps.google.com/maps/api/js?v=3.23&key=AIzaSyCK7YFK6nwkpQSUcbz4z2Kv_Ai-kUlFeYM"}
   %body
-    
-    %header.header
-      .header__bar.row
-        - if user_signed_in?
-          .user_nav.grid-6
-
-
-
-          %a{:href => "/"}
-            = image_tag ('logo.jpeg'), size: "180x180", id: "logo"
-
-
-
-            %li.topbar{:style => "list-style:none;"}
-              %a.post{:href => "/tweets/new"} 找小明
-              %a.btn{:href => "/tweets"} 看看别人说什么
-
-          %span
-            = current_user.nickname
-            %ul.user__info
-
-
+    .logo-contain
+      %a{:href => "/"}
+        = image_tag ('logo.jpeg'), size: "180x180", id: "logo"
 
     .center
       = yield
-      - if user_signed_in?
 
-        .btn-container
-          = link_to '管理', user_path(current_user), class: 'left'
-          = link_to '退出', destroy_user_session_path, method: :delete, class: 'right'
-      - else
-        - unless params[:controller] == 'devise/sessions' && params[:action] == 'new'
-          .btn-container
-            = link_to '登陆', new_user_session_path, class: 'left'
-            = link_to '注册', new_user_registration_path, class: 'right'
+    %header
+      =render :partial => 'layouts/header'
 
-  %footer.center
-    %p Copyright Xiaoming 2017.
+    .bottom-padding

@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
   has_many :replies              #repilesテーブルとのアソシエーション
   has_many :reviews
   has_one :profile
-
+  has_one :bar_code
 end

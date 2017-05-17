@@ -1,6 +1,11 @@
 .single-tweet.align-left
   .column.nice-margin
-    %a{ 'href': "/users/#{t.user.id}" }= image_tag t.user.profile.pic.url(:thumb), size: '40x40'
+    %a{ 'href': "/users/#{t.user.id}" }
+      - if t.user.profile
+        = image_tag t.user.profile.pic.url(:thumb), size: '40x40'
+      - else
+        = image_tag 'missing.png', size: '40x40'
+
     %a.emph{ 'href': "/users/#{t.user.id}" }= nickname
     .row.align-right.position-right
       .sub-info= "#{t.start_date} to #{t.end_date}"

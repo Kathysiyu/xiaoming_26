@@ -1,4 +1,4 @@
-.contents.row
+.contents.row#tweet-show
   = render 'layouts/tweets', nickname: @tweet.user.nickname, t: @tweet
   .content_post
     - if user_signed_in? && current_user.id == @tweet.user_id

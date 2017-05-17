@@ -11,7 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502055334) do
+ActiveRecord::Schema.define(version: 20170517085620) do
+
+  create_table "bar_codes", force: :cascade do |t|
+    t.integer  "user_id",          limit: 4,   null: false
+    t.string   "pic_file_name",    limit: 255
+    t.string   "pic_content_type", limit: 255
+    t.integer  "pic_file_size",    limit: 4
+    t.datetime "pic_updated_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.string   "description", limit: 255
+    t.string   "address",     limit: 255
+    t.float    "latitude",    limit: 24
+    t.float    "longitude",   limit: 24
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "decription", limit: 4
+    t.float    "latitude",   limit: 24
+    t.float    "longitude",  limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.float    "latitude",    limit: 24
+    t.float    "longitude",   limit: 24
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id",          limit: 4,     null: false
@@ -43,11 +81,12 @@ ActiveRecord::Schema.define(version: 20170502055334) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string   "user_id",    limit: 255
-    t.integer  "rate",       limit: 4
-    t.text     "review",     limit: 65535
+    t.string   "user_id",     limit: 255
+    t.integer  "rate",        limit: 4
+    t.text     "review",      limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "reviewer_id", limit: 4
   end
 
   create_table "tweets", force: :cascade do |t|
