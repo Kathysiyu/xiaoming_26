@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.13', '< 0.5'
+# gem 'mysql2', '>= 0.3.13', '< 0.5'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -38,8 +39,6 @@ gem "gmaps4rails"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
-
 group :development do
   gem 'byebug'
   gem 'quiet_assets'
@@ -48,6 +47,6 @@ group :development do
   gem 'web-console', '~> 2.0'
 end
 
-
-
-
+group :production do
+  gem 'rails_12factor'
+end

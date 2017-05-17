@@ -97,13 +97,13 @@ ul {
         }
     }
     #strategy{
-        background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/assets/strategy.jpeg);
+        background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), image-url('strategy.jpeg');
     }
     #newTweet{
-        background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/assets/zhao.jpeg);
+        background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), image-url('zhao.jpeg');
     }
     #about{
-        background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(/assets/about.jpeg);
+        background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), image-url('about.jpeg');
     }
 }
 
