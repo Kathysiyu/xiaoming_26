@@ -1,7 +1,7 @@
 .center.nice-margin.background
-  %button#user-tweets-btn 投稿
-  %button#user-profile-btn 资料
-  %button#user-rank-btn 评价
+  %button#user-tweets-btn tweet
+  %button#user-profile-btn profile
+  %button#user-rank-btn review
 #user-tweets
   %p= "#{@user.nickname}さんの投稿一覧"
   - @tweets.each do |t|
@@ -46,15 +46,14 @@
       %dd= @user.profile.good_at 
       %dt= 'slogan:'
       %dd= @user.profile.slogan 
-    - if @user.id == current_user.id
-      %button
-        = link_to edit_profile_path do
-          %i.fa.fa-pencil-square-o{ style: 'font-size: 30px;' }
+    %button
+      = link_to edit_profile_path do
+        %i.fa.fa-pencil-square-o{ style: 'font-size: 30px;' }
+
   - else
-    - if @user.id == current_user.id
-      %button
-        = link_to new_profile_path do
-          %i.fa.fa-pencil-square-o{ sytle: 'font-size: 30px' }
+    %button
+      = link_to new_profile_path do
+        %i.fa.fa-pencil-square-o{ sytle: 'font-size: 30px' }
 
   - if @user.bar_code
     %button#qr-btn
@@ -78,10 +77,10 @@
 
 #user-rank
   %p
-    %span Rate
+    %span.rate Rate
     %input#review-rate{ type: 'number', min: '1', max: '5' }
   %p
-    %span Review
+    %span.review Review
     %textarea#review-review{ cols: '30', rows: '3', placeholder: 'review' }
   %button#review-btn{ type: 'button', data: { userid: @user.id, rid: current_user.id }} SEND
 

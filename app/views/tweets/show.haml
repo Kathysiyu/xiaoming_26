@@ -28,10 +28,10 @@
 
     .container
       - if current_user
-        %textarea#reply-text{ cols: '30', rows: '5', name: 'text', placeholder: '回复他' }
+        %textarea#reply-text{ cols: '30', rows: '5', name: 'text', placeholder: 'reply' }
         %button#reply-btn{ type: 'button', data: { tweetid: @tweet.id } } SEND
       #replies
-        %h4 ＜コメント一覧＞
+        %h4 ＜see all ＞
         - if @replies
           - @replies.each do |comment|
             %p
