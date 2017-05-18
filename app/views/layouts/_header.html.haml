@@ -1,9 +1,10 @@
 .funcBtn
-  .funcBtn_contents
-    - if user_signed_in?
+  - if user_signed_in?
+    .funcBtn_contents
       %a{href: "/tweets/new"}
         %span.fa.fa-pencil
-    - else
+  - else
+    .funcBtn_contents
       = link_to new_user_session_path do
         %span.fa.fa-pencil
 
