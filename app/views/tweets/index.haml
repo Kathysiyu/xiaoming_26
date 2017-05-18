@@ -1,5 +1,10 @@
-= link_to new_tweet_path do
-  %i.fa.fa-cloud{ style: 'font-size: 60px; color: #FA8072;' }
+- if user_signed_in?
+  = link_to new_tweet_path do
+    %i.fa.fa-cloud{ style: 'font-size: 60px; color: #FA8072;' }
+- else
+  = link_to new_user_session_path do
+    %i.fa.fa-cloud{ style: 'font-size: 60px; color: #FA8072;' }
+
 
 .center
   - @tweets.each do |t|
